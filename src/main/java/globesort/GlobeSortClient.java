@@ -40,13 +40,50 @@ public class GlobeSortClient {
 
     public void run(Integer[] values) throws Exception {
         System.out.println("Pinging " + serverStr + "...");
+
+	System.out.print("System Time prior to ping: "); //new
+	long prior = System.nanoTime();
+      	System.out.println(prior); //new
+
         serverStub.ping(Empty.newBuilder().build());
+
+	System.out.print("System Time after ping: "); //new
+	long post = System.nanoTime();
+      	System.out.println(post); //new
+
         System.out.println("Ping successful.");
 
+	System.out.print("Ping time difference: "); //new
+	System.out.println(post - prior); //new
+
         System.out.println("Requesting server to sort array");
+
+
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
+
+	System.out.print("System Time upon request: "); //new
+	prior = System.nanoTime(); //new
+      	System.out.println(prior); //new
+
+
         IntArray response = serverStub.sortIntegers(request);
+
+	System.out.print("System Time after response: "); //new
+	post = System.nanoTime();
+      	System.out.println(post); //new
+
+
         System.out.println("Sorted array");
+
+	System.out.print("Sort Request time difference: "); //new
+	System.out.println(post - prior); //new
+
+	Integer appTime = IntArray.newBuilder().getSortTime();
+	
+	System.out.print("Sorting time on server side: ");
+	System.out.println(appTime);
+
+
     }
 
     public void shutdown() throws InterruptedException {
