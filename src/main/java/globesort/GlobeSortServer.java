@@ -94,6 +94,8 @@ public class GlobeSortServer {
                 responseBuilder.addValues(val);
             }
 	    long post = System.nanoTime(); //AW
+	    System.out.print("Sort Time:");
+            System.out.println(post - prior);
 	    Integer diff = new Integer ( (int) (post - prior) ); //AW
 	    responseBuilder.setSortTime(diff); //AW
             IntArray response = responseBuilder.build();

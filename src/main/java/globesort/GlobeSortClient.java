@@ -81,7 +81,7 @@ public class GlobeSortClient {
 	Integer appTime = IntArray.newBuilder().getSortTime();
 	
 	System.out.print("Sorting time on server side: ");
-	System.out.println(appTime);
+	System.out.println(appTime.toString());
 
 
     }
